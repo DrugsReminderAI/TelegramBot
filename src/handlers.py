@@ -12,4 +12,4 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     }
 
     await send_to_backend(message)
-    await update.message.reply_text("✅ Принято.")
+   # await update.message.reply_text("✅ Принято.")
