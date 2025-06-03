@@ -11,5 +11,5 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "timestamp": update.message.date.isoformat()
     }
 
-    #await send_to_backend(message)
+    await send_to_backend(message)
     await update.message.reply_text("✅ Принято.")
