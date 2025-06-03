@@ -20,8 +20,12 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-            cd /opt/telegrambot || git clone https://github.com/DrugsReminderAI/TelegramBot.git /opt/telegrambot && cd /opt/telegrambot
-            git pull origin main
-            docker-compose build
-            docker-compose up -d
+          git config --global --add safe.directory /opt/telegrambot
+          if [ ! -d /opt/telegrambot/.git ]; then
+          git clone https://github.com/DrugsReminderAI/TelegramBot.git /opt/telegrambot
+          fi
+          cd /opt/telegrambot
+          git pull origin main
+          docker-compose build
+          docker-compose up -d
           EOF

@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  telegrambot:
+    container_name: telegrambot
+    build:
+      context: .
+    env_file:
+      - .env
+    restart: unless-stopped
